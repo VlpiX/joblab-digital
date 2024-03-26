@@ -1,0 +1,40 @@
+div.main{
+    height: 750px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+div.oggetto{
+
+    margin: 1%;
+    background-color: #ccc;
+    width:auto;
+
+    padding: 3%;
+}
+
+.col1{
+    float: left;
+    width: 15%;
+}
+.border1{
+    border: 1px solid #000000;
+}
+
+div.title{
+    border-bottom: 1px solid black;
+    display: flex;
+    width:auto;
+}
+
+div.paragrafo{
+    display: flex;
+    
+}
+
+.content {
+    justify-content: center; 
+}

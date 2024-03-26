@@ -1,86 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joblab - Modulo Digital</title>
-    <link rel="stylesheet" href="./css/main.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JobLab</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .header { text-align: center; padding: 10px; }
+  .logo { font-size: 30px; }
+  .nav { margin: 20px; }
+  .nav a { margin-right: 20px; text-decoration: none; color: #333; }
+  .product-grid { display: flex; flex-wrap: wrap; justify-content: space-around; }
+  .product { width: 30%; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin: 10px; padding: 20px; }
+  .product img { max-width: 100%; }
+  .product h2 { font-size: 24px; color: #333; }
+  .product p { color: #666; }
+</style>
 </head>
-
 <body>
-    <h1>Benvenuti al modulo Digital del JobLab Accenture</h1>
-    <p>cliccate sui pulsanti sotto per vedere i dati restituiti dal back-end</p>
 
-    <details id="btnCars">
-        <summary>Auto in vendita</summary>
-        <pre><code id="resultCars"></code>
-        </pre>
-    </details>
+<div class="header">
+  <div class="logo">LOGO</div>
+  <div class="nav">
+    <a href="#">HOME</a>
+    <a href="#">ABOUT</a>
+    <a href="#">CONTACTS</a>
+  </div>
+</div>
 
-    <details id="btnClothes">
-        <summary>Vestiti in vendita</summary>
-        <pre><code id="resultClothes"></code>
-        </pre>
-    </details>
+<div class="product-grid">
+  <div class="product">
+    <img id="img0" src="">
+    <h2 id="header0"></h2>
+    <p>price: </p>
+    <p id="p0"></p>
+    <button onclick=""><b>Dettagli</b></button>
+  </div>
+  <div class="product">
+    <img id="img1" src="">
+    <h2 id="header1"></h2>
+    <p>price: </p>
+    <p id="p1"></p>
+    <button><b>Dettagli</b></button>
+  </div>
+  <div class="product">
+    <img id="img2" src="">
+    <h2 id="header2"></h2>
+    <p>price: </p>
+    <p id="p2"></p>
+    <button><b>Dettagli</b></button>
+  </div>
+  <div class="product">
+    <img id="img3" src="">
+    <h2 id="header3"></h2>
+    <p>price: </p>
+    <p id="p3"></p>
+    <button><b>Dettagli</b></button>
+  </div>
+  <div class="product">
+    <img id="img4" src="">
+    <h2 id="header4"></h2>
+    <p>price: </p>
+    <p id="p4"></p>
+    <button><b>Dettagli</b></button>
+  </div>
+  <div class="product">
+    <img id="img5" src="">
+    <h2 id="header5"></h2>
+    <p>price: </p>
+    <p id="p5"></p>
+    <button><b>Dettagli</b></button>
+  </div>
+</div>
 
-    <details id="btnTechs">
-        <summary>Gadget in vendita</summary>
-        <pre><code id="resultTechs"></code>
-        </pre>
-    </details>
+<script type="module">
+    import fetch from "./js/fetch.js";
+    getJSON();
+    async function getJSON (){
+        const data = await fetch[`getCars`]();
+        document.getElementById('img0').setAttribute("src", data[0].image);
+        document.getElementById('img1').setAttribute("src", data[1].image);
+        document.getElementById('img2').setAttribute("src", data[2].image);
+        document.getElementById('img3').setAttribute("src", data[3].image);
+        document.getElementById('img4').setAttribute("src", data[4].image);
+        document.getElementById('img5').setAttribute("src", data[5].image);
 
-    <p>sotto invece alcuni suggerimenti su come creare</p>
-    <details>
-        <summary>una barra di navigazione</summary>
-        <p><a href="https://www.w3schools.com/howto/howto_js_topnav.asp"> Superiore (Top Navigation)</a></p>
-        <p><a href="https://www.w3schools.com/howto/howto_js_sidenav.asp"> laterale (Side Navigation)</a></p>
-    </details>
-    <details>
-        <summary>una tabella</summary>
-        <p><a href="https://www.w3schools.com/tags/tag_table.asp"> Tabella Semplice</a></p>
-        <p><a href="https://www.w3schools.com/tags/tag_tbody.asp"> Con distinzione di stili e comportamenti per Header,
-                Body e Footer </a></p>
-    </details>
-    <details>
-        <summary>una dialog di dettagli</summary>
-        <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog">Riferimento MDN</a></p>
-    </details>
-    <script type="module">
-        import fetch from './js/fetch.js';
+        document.getElementById('p0').innerText = data[0].price;
+        document.getElementById('p1').innerText = data[1].price;
+        document.getElementById('p2').innerText = data[2].price;
+        document.getElementById('p3').innerText = data[3].price;
+        document.getElementById('p4').innerText = data[4].price;
+        document.getElementById('p5').innerText = data[5].price;
 
-        /***
-         * Funzione che riporta l'output di un servizio formattato in un code Element
-         * @Parameters:
-         * f: la funzione che restituisce l'output json del servizio
-         * idCode: l'id dell'elemento in cui incollare il contenuto
-         */
-        async function showDataInCode(f, idCode) {
-            const data = await f();
-            const codeElement = document.getElementById(idCode);
-            codeElement.innerHTML = JSON.stringify(data, null, 4);
-        }
+        document.getElementById('header0').innerText = data[0].name;
+        document.getElementById('header1').innerText = data[1].name;
+        document.getElementById('header2').innerText = data[2].name;
+        document.getElementById('header3').innerText = data[3].name;
+        document.getElementById('header4').innerText = data[4].name;
+        document.getElementById('header5').innerText = data[5].name;
+    }
+</script>
 
-        /***
-         * Funzione che aggiunge all'evento di apertura la chiamata al servizio del back-end
-         * @Parameters:
-         * type => il tipo di output da visualizzare, è il riferimento per:
-         *  * la funzione (getXXXX)
-         *  * l'elemento details (btnXXXX) a cui agganciare l'evento
-         *  * l'elemento code (resultXXXX) in cui incollare il risultato
-         */
-        async function addToggleEventToDetail(type) {
-            const detailElement = document.getElementById(`btn${type}`);
-            detailElement.addEventListener("toggle", (event) => {
-                if (detailElement.open) {
-                    showDataInCode(fetch[`get${type}`], `result${type}`)
-                }
-            });
-        }
-
-        //Applico la logica di chiamata ed esposizione per tutti i 3 tipi di servizio che ho a disposizione
-        ["Cars", "Techs", "Clothes"].forEach(type => addToggleEventToDetail(type));
-    </script>
 </body>
-
 </html>
